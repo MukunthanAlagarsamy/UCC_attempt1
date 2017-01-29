@@ -48,7 +48,7 @@ def makeWebhookResult(req):
         # "contextOut": [],
         "source": "apiai-onlinestore-shipping"
     }   
-
+def makeWebhookResult(req):
     if req.get("result").get("action") != "date.when":
         return {}
     result = req.get("result")
