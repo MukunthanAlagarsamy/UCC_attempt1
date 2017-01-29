@@ -28,9 +28,7 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    if req.get("result").get("action") != "product.identification":
-        return {}
-    elif req.get("result").get("action") = "product.identification":
+    if req.get("result").get("action") = "product.identification":
         result = req.get("result")
         parameters = result.get("parameters")
         zone = parameters.get("producttype")
