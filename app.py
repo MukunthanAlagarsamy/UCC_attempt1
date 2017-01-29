@@ -53,7 +53,7 @@ def makeWebhookResult(req):
         return {}
     result = req.get("result")
     parameters = result.get("parameters")
-    zone = parameters.get("date-when")
+    zone = parameters.get("datewhen")
 
     cost = {'Today':'Today is selected', 'Tomo':'Tomo is selected', 'Next Week':'Next Week is selected'}
 
