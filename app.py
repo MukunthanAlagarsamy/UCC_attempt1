@@ -27,27 +27,7 @@ def webhook():
     r.headers['Content-Type'] = 'application/json'
     return r
 
-def makeWebhookResult(req):
-    if req.get("result").get("action") != "shipping.cost":
-        return {}
-    result = req.get("result")
-    parameters = result.get("parameters")
-    zone = parameters.get("shipping-zone")
 
-    cost = {'Europe':'Europe is selected', 'North America':'North is selected', 'South America':'SA is selected', 'Asia':'Asia is selected', 'Africa':'Africa is selected'}
-
-    speech = "The cost of shipping to " + zone + " is " + str(cost[zone]) + " euros."
-
-    print("Response:")
-    print(speech)
-
-    return {
-        "speech": speech,
-        "displayText": speech,
-        #"data": {},
-        # "contextOut": [],
-        "source": "apiai-onlinestore-shipping"
-    }   
 def makeWebhookResult(req):
     if req.get("result").get("action") != "date.when":
         return {}
