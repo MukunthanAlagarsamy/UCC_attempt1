@@ -28,11 +28,10 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    if req.get("result").get("action") = "product.identification":
-        result = req.get("result")
-        parameters = result.get("parameters")
-        zone = parameters.get("producttype")
-    
+result = req.get("result")
+parameters = result.get("parameters")
+zone = parameters.get("producttype")
+                      
         cost = {'TV':'TV is selected', 'Mobile':'Mobile is selected', 'Bank':'Bank is selected'}
     
         speech = "Your Response is " + zone + " result is " + str(cost[zone]) + " TX."
