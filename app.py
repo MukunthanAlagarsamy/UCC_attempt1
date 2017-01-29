@@ -32,14 +32,18 @@ def makeWebhookResult(req):
         return {}
     result = req.get("result")
     parameters = result.get("parameters")
-    zone = parameters.get("producttype")
-
-    cost = {'TV':'TV is selected', 'Mobile':'Mobile is selected', 'Bank':'Bank is selected'}
-
-    speech = "Your Response is " + zone + " result is " + str(cost[zone]) + " TX."
-
-    print("Response:")
-    print(speech)
+    if req.get("result").get("action") = "product.identification":
+        zone = parameters.get("producttype")
+        cost = {'TV':'TV is selected', 'Mobile':'Mobile is selected', 'Bank':'Bank is selected'}
+        speech = "Your Response is " + zone + " result is " + str(cost[zone]) + " TX."
+        print("Response:")
+        print(speech)
+    if req.get("result").get("action") = "shipping.cost":
+         zone = parameters.get("producttype")
+        cost = {'Europe':'Europe is selected', 'North America':'North America is selected', 'Asia':'Asia is selected'}
+        speech = "Your Response is " + zone + " result is " + str(cost[zone]) + " TX."
+        print("Response:")
+        print(speech)
 
     return {
         "speech": speech,
