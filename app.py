@@ -53,11 +53,11 @@ def makeWebhookResult(req):
         return {}
     result = req.get("result")
     parameters = result.get("parameters")
-    zone = parameters.get("datewhen")
+    zone1 = parameters.get("datewhen")
 
-    cost = {'Today':'Today is selected', 'Tomo':'Tomo is selected', 'Next Week':'Next Week is selected'}
+    timing = {'Today':'Today is selected', 'Tomo':'Tomo is selected', 'Next Week':'Next Week is selected'}
 
-    speech = "The date of shipping to " + zone + " is " + str(cost[zone]) + " EST."
+    speech = "The date of shipping to " + zone + " is " + str(timing[zone1]) + " EST."
 
     print("Response:")
     print(speech)
@@ -67,7 +67,7 @@ def makeWebhookResult(req):
         "displayText": speech,
         #"data": {},
         # "contextOut": [],
-        "source": "apiai-onlinestore-shipping"
+        "source": "apiai-date-when"
     }
 
 
