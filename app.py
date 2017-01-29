@@ -28,20 +28,27 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    
-        speech = req.get("result").get("action")
+    if req.get("result").get("action") != "shipping.cost":
+        return {}
+    if req.get("result").get("action") = "shipping.cost"{
+        result = req.get("result")
+        parameters = result.get("parameters")
+        zone = parameters.get("shipping-zone")
 
-        print("Response:")
-        print(speech)
+        cost = {'Europe':100, 'North America':200, 'South America':300, 'Asia':400, 'Africa':500}
 
-        return {
-            "speech": speech,
-            "displayText": speech,
-            #"data": {},
-            # "contextOut": [],
-            "source": "apiai-onlinestore-shipping"
-        }
+        speech = "The cost of shipping to " + zone + " is " + str(cost[zone]) + " euros."
+    }
+    print("Response:")
+    print(speech)
 
+    return {
+        "speech": speech,
+        "displayText": speech,
+        #"data": {},
+        # "contextOut": [],
+        "source": "apiai-onlinestore-shipping"
+    }
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
