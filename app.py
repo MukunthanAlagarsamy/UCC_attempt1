@@ -28,15 +28,15 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    if req.get("result").get("action") != "shipping.cost":
+    if req.get("result").get("action") != "product.identification":
         return {}
     result = req.get("result")
     parameters = result.get("parameters")
-    zone = parameters.get("shipping-zone")
+    zone = parameters.get("producttype")
 
-    cost = {'Europe':'Europe is selected', 'North America':'NA is selected', 'South America':'SA is selected', 'Asia':'Asia is selected', 'Africa':'Africa is selected'}
+    cost = {'TV':'TV is selected', 'Mobile':'Mobile is selected', 'Bank':'Bank is selected'}
 
-    speech = "The cost of shipping to " + zone + " is " + str(cost[zone]) + " euros."
+    speech = "Your Response is " + zone + " result is " + str(cost[zone]) + " TX."
 
     print("Response:")
     print(speech)
@@ -46,29 +46,8 @@ def makeWebhookResult(req):
         "displayText": speech,
         #"data": {},
         # "contextOut": [],
-        "source": "apiai-onlinestore-shipping"
+        "source": "apiai-product"
     }   
-
-    if req.get("result").get("action") != "date.when":
-        return {}
-    result = req.get("result")
-    parameters = result.get("parameters")
-    zone1 = parameters.get("datewhen")
-
-    timing = {'Today':'Today is selected', 'Tomo':'Tomo is selected', 'Next Week':'Next Week is selected'}
-
-    speech = "The date of shipping to " + zone + " is " + str(timing[zone1]) + " EST."
-
-    print("Response:")
-    print(speech)
-
-    return {
-        "speech": speech,
-        "displayText": speech,
-        #"data": {},
-        # "contextOut": [],
-        "source": "apiai-date-when"
-    }
 
 
 if __name__ == '__main__':
