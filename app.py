@@ -30,7 +30,7 @@ def webhook():
 def makeWebhookResult(req):
     if req.get("result").get("action") != "product.identification":
         return {}
-    if req.get("result").get("action") = "product.identification":
+    elif req.get("result").get("action") = "product.identification":
         result = req.get("result")
         parameters = result.get("parameters")
         zone = parameters.get("producttype")
